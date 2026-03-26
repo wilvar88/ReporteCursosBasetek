@@ -35,6 +35,13 @@ async function fetchDashboardData() {
         // Update the last updated time from Google Sheets
         document.getElementById('last-update').innerText = dashboardData.kpis.last_updated || 'Desconocido';
 
+        // Configure download button
+        const btnDownload = document.getElementById('btn-download');
+        if (btnDownload && dashboardData.kpis.download_url) {
+            btnDownload.href = dashboardData.kpis.download_url;
+            btnDownload.classList.remove('hidden');
+        }
+
         // Show online indicator
         const indicator = document.getElementById('online-indicator');
         if(indicator) indicator.classList.remove('hidden');
